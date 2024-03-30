@@ -57,6 +57,7 @@ jobs:
         run: |
           cd react-app
           echo "hello I am the best"
+          echo "hello ${{secrets.HELLO_SECRET}}"
           # echo $secrets.GH_TOKEN
           # echo $secrets.GITHUB_TOKEN
           # echo $GITHUB_TOKEN
