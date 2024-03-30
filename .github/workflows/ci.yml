@@ -52,21 +52,32 @@ jobs:
           name: build
           path: react-app/build
       # - uses: actions/download-artifacts
-      - name: Create a Release
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+            persist-credentials: false
+      - name: Release
         run: |
           cd react-app
-          echo "hello I am the best"
-          export GITHUB_TOKEN=${{ secrets.MY_GITHUB_TOKEN }}
-          # echo $secrets.GH_TOKEN
-          # echo $secrets.GITHUB_TOKEN
-          # echo $GITHUB_TOKEN
-          # echo $GH_TOKEN
-          npx semantic-release
-        # env:
-          # GH_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
-          # GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
-          # GITHUB_TOKEN: ${{ github.token }}
+          npm i yarn
+          yarn semantic-release
+        env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # - name: Create a Release
+      #   if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+      #   run: |
+      #     cd react-app
+      #     echo "hello I am the best"
+      #     export GITHUB_TOKEN=${{ secrets.MY_GITHUB_TOKEN }}
+      #     # echo $secrets.GH_TOKEN
+      #     # echo $secrets.GITHUB_TOKEN
+      #     # echo $GITHUB_TOKEN
+      #     # echo $GH_TOKEN
+      #     npx semantic-release
+      #   env:
+      #     GH_TOKEN: ${{ secrets.GH_TOKEN }}
+      #     GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+      #     # GITHUB_TOKEN: ${{ github.token }}
       - name: Deploy to Staging
         if: github.event_name == 'push'
         run: |
