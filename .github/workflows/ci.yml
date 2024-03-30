@@ -16,7 +16,11 @@ jobs:
       - run: |
           cd react-app
           npm ci
+      - run: |
+          cd react-app
           npm run format:check
-          npm test -- --coverage
+      - run: |
+          cd react-app
+          npm run test -- --coverage
         env:
           CI: true
