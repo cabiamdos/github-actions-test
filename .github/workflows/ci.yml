@@ -63,7 +63,7 @@ jobs:
           # echo $GITHUB_TOKEN
           # echo $GH_TOKEN
           npx semantic-release
-        env:
+        # env:
           # GH_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
           # GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
           # GITHUB_TOKEN: ${{ github.token }}
