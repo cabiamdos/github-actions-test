@@ -63,7 +63,7 @@ jobs:
           # echo $secrets.GITHUB_TOKEN
           # echo $GITHUB_TOKEN
           # echo $GH_TOKEN
-          GH_TOKEN=${{secrets.SEMANTIC_RELEASE}} npx semantic-release
+          GH_TOKEN=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 npx semantic-release
         # env:
           # GH_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
           # GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
