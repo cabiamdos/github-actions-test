@@ -56,14 +56,14 @@ jobs:
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         run: |
           cd react-app
+          echo "hello I am the best"
           echo $secrets.GH_TOKEN
           echo $secrets.GITHUB_TOKEN
           echo $GITHUB_TOKEN
           echo $GH_TOKEN
           npx semantic-release
         env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ github.token }}
       - name: Deploy to Staging
         if: github.event_name == 'push'
         run: |
