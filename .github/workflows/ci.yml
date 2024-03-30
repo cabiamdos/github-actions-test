@@ -22,7 +22,7 @@ jobs:
       - name: Use NodeJS
         uses: actions/setup-node@v1
         with:
-          node-version: "18.x"
+          node-version: "20.8.1"
       - run: |
           cd react-app
           npm i
@@ -58,7 +58,8 @@ jobs:
           cd react-app
           npx semantic-release
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GITHUB_TOKEN: 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
       - name: Deploy to Staging
         if: github.event_name == 'push'
         run: |
