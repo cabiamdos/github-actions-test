@@ -58,8 +58,8 @@ jobs:
           cd react-app
           npx semantic-release
         env:
-          # GH_TOKEN: ${{ secrets.GH_TOKEN }}
-          GITHUB_TOKEN: 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
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Deploy to Staging
         if: github.event_name == 'push'
         run: |
