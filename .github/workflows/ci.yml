@@ -57,6 +57,7 @@ jobs:
         run: |
           cd react-app
           echo "hello I am the best"
+          export GITHUB_TOKEN=${{ secrets.MY_GITHUB_TOKEN }}
           # echo $secrets.GH_TOKEN
           # echo $secrets.GITHUB_TOKEN
           # echo $GITHUB_TOKEN
@@ -64,7 +65,7 @@ jobs:
           npx semantic-release
         env:
           # GH_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
-          GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
+          # GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
           # GITHUB_TOKEN: ${{ github.token }}
       - name: Deploy to Staging
         if: github.event_name == 'push'
