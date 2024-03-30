@@ -15,6 +15,7 @@ jobs:
           node-version: "12.x"
       - run: |
           cd react-app
+          npm i
           npm ci
       - run: |
           cd react-app
