@@ -10,6 +10,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      SURGE_LOGIN: ${{ secrets.SURGE_LOGIN }}
+      SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
     steps:
       - uses: actions/checkout@v2
       - name: Cache node_modules
@@ -76,10 +79,24 @@ jobs:
           # GITHUB_TOKEN: ${{ github.token }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Deploy to Staging
-        if: github.event_name == 'push'
+        if: github.event_name == 'push' && github.ref == 'refs/head/develop'
         run: |
           cd react-app
           npx surge --project ./build --domain elegant-ice.surge.sh
+        
+
+      - name: Deploy to Production
+        if: github.event_name == 'push' && github.ref == 'refs/head/main'
+        run: |
+          cd react-app
+          npx surge --project ./build --domain ethereal-hands.surge.sh
+        # env:
+        #   SURGE_LOGIN: ${{ secrets.SURGE_LOGIN }}
+        #   SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
+      - name: Upload Coverage Report
+        if: github.event_name == 'push' && github.ref == 'refs/head/main'
+        run: |
+          cd react-app
+          npx codecov
         env:
-          SURGE_LOGIN: ${{ secrets.SURGE_LOGIN }}
-          SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
