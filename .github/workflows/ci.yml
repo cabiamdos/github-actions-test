@@ -62,7 +62,7 @@ jobs:
           npm i yarn
           yarn semantic-release
         env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
       # - name: Create a Release
       #   if: github.event_name == 'push' && github.ref == 'refs/heads/main'
       #   run: |
