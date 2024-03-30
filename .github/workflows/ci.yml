@@ -22,7 +22,7 @@ jobs:
       - name: Use NodeJS
         uses: actions/setup-node@v1
         with:
-          node-version: "20.8.1"
+          node-version: "18.x"
       - run: |
           cd react-app
           npm i
@@ -56,10 +56,10 @@ jobs:
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         run: |
           cd react-app
-          npx semantic-release
+          npx semantic-release -r https://github.com/cabiamdos/github-actions-test
         env:
-          GH_TOKEN: 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
-          GITHUB_TOKEN: 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
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Deploy to Staging
         if: github.event_name == 'push'
         run: |
