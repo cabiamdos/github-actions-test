@@ -1,7 +1,6 @@
 name: Actions Workflow
-
 on:
-  pull_request:
+  fork:
     branches:
       - main
       - 'featuer/*' # maches featuer/featA, featuer/featB

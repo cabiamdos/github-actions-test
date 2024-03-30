@@ -1,5 +1,5 @@
 name: matrix
-on: pull_request
+on: fork
 
 jobs:
   node-version:
