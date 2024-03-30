@@ -52,6 +52,11 @@ jobs:
           name: build
           path: react-app/build
       # - uses: actions/download-artifacts
+      - name: ZIP Assets
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: |
+          zip -r build.zip ./build
+          zip -r coverage.zip ./coverage
       - name: Create a Release
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         run: |
@@ -63,11 +68,12 @@ jobs:
           # echo $secrets.GITHUB_TOKEN
           # echo $GITHUB_TOKEN
           # echo $GH_TOKEN
-          GH_TOKEN=${{secrets.SEMANTIC_RELEASE}} npx semantic-release
-        # env:
+          npx semantic-release
+        env:
           # GH_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
           # GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
           # GITHUB_TOKEN: ${{ github.token }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Deploy to Staging
         if: github.event_name == 'push'
         run: |
