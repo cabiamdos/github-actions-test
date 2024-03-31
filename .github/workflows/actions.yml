@@ -23,10 +23,12 @@ jobs:
       - run: |
           echo ${{ steps.issue.outputs.issue }}
       - name: Execute hello action docker
+        if: always()
         uses: ./.github/actions/hello-docker
         with:
           who-to-greet: "World"
       - name: Send a slack message
+        if: always()
         uses: ./.github/actions/slack-php
         with:
           slack_webhook: ${{ secrets.SLACK_WEBHOOK }}
