@@ -17,4 +17,4 @@ runs:
     some_env: sofj
   # entrypoint: 
   args:
-    - ${{ input.who-to-greet}}
+    - ${{ inputs.who-to-greet}}
