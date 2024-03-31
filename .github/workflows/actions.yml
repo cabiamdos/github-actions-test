@@ -12,3 +12,13 @@ jobs:
           who-to-greet: "World"
       - run: |
           echo "Time: ${{ steps.hello.outputs.time }}"
+      - uses: ./.github/actions/issue
+        id: issue
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          title: title
+          body: body
+          assignees: |
+            'cabiamdos'
+      - run: |
+          echo ${{ steps.issue.outputs.issue }}
