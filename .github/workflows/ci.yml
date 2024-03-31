@@ -22,7 +22,7 @@ jobs:
       - name: Checkout project
         uses: actions/checkout@v2
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ github.token }}
       - name: Cache node_modules
         uses: actions/cache@v1
         with:
