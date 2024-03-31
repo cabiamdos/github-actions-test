@@ -22,3 +22,12 @@ jobs:
             'cabiamdos'
       - run: |
           echo ${{ steps.issue.outputs.issue }}
+      - name: Execute hello action docker
+        uses: ./.github/actions/hello-docker
+        with:
+          who-to-greet: "World"
+      - name: Send a slack message
+        uses: ./.github/actions/slack-php
+        with:
+          slack_webhook: ${{ secrets.SLACK_WEBHOOK }}
+          message: Hello slack

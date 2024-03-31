@@ -1,0 +1,20 @@
+name: Hello Docker
+author: William Cabiam
+description: hello docker in docker container
+inputs:
+  who-to-greet:
+    description: "who to greet"
+    required: true
+    default: Cabiam
+outputs:
+  time:
+    description: "The greeting time"
+
+runs:
+  using: "docker"
+  image: "Dockerfile"
+  env:
+    some_env: sofj
+  # entrypoint: 
+  args:
+    - ${{ input.who-to-greet}}
