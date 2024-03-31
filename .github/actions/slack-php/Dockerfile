@@ -1,7 +1,7 @@
 
-# FROM php:7.4.2
-FROM composer
-# COPY --from=composer /user/bin/composer /user/bin/composer
+FROM php:7.4.2
+# FROM composer
+COPY --from=composer /user/bin/composer /user/bin/composer
 
 WORKDIR /usr/src/app
 COPY . .

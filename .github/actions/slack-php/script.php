@@ -59,7 +59,9 @@ $response = Requests::post(
   // json_encode(array($jsonData))
 );
 
+echo "::group::Slack Response\n"
 var_dump($response);
+echo "::endgroup::\n"
 
 if(!$resopnse->success) {
   // echo 'error'
