@@ -12,11 +12,11 @@ jobs:
     env:
       SURGE_LOGIN: ${{ secrets.SURGE_LOGIN }}
       SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
-    permissions:
-      issues: write
-      pages: write
-      actions: write
-      contents: write
+    # permissions:
+    #   issues: write
+    #   pages: write
+    #   actions: write
+    #   contents: write
     steps:
       - name: Checkout project
         uses: actions/checkout@v2
